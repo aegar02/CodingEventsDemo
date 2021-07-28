@@ -44,9 +44,10 @@ namespace coding_events_practice.Controllers
                 {
                     Name = addEventViewModel.Name,
                     Description = addEventViewModel.Description,
+                    ContactEmail = addEventViewModel.ContactEmail,
                     Location = addEventViewModel.Location,
                     NumberOfAttendees = addEventViewModel.NumberOfAttendees,
-                    ContactEmail = addEventViewModel.ContactEmail,
+                    
                 };
 
                 EventData.Add(newEvent);
@@ -82,7 +83,7 @@ namespace coding_events_practice.Controllers
         public IActionResult Edit(int eventId)
         {
             Event EditEvent = EventData.GetById(eventId);
-            ViewBag.editEvent = EditEvent;
+            ViewBag.editEvent = EventData.GetById(eventId);
             ViewBag.title = $"Edit Event {EditEvent.Name} (id = {EditEvent.Id}";
             return View();
         }

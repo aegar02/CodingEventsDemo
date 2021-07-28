@@ -24,19 +24,23 @@ else
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Event Name</th>
-                <th scope="col">Event Description</th>
-                <th scope="col">Event Owner Email</th>
+                <th scope="col">Description</th>
+                <th scope="col">Email</th>
+                <th scope="col">Location</th>
+                <th scope="col">Number of Attendees</th>
             </tr>
         </thead>
         <tbody>
             @foreach (Event evt in Model)
             {
-                <tr>
-                    <td scope="row">@evt.Id</td>
-                    <td scope="row">@evt.Name</td>
-                    <td scope="row">@evt.Description</td>
-                    <td scope="row">@evt.ContactEmail</td>
-                </tr>
+            <tr>
+                <td scope="row">@evt.Id</td>
+                <td scope="row">@evt.Name</td>
+                <td scope="row">@evt.Description</td>
+                <td scope="row">@evt.ContactEmail</td>
+                <td scope="row">@evt.Location</td>
+                <td scope="row">@evt.NumberOfAttendees</td>
+            </tr>
             }
         </tbody>
     </table>
