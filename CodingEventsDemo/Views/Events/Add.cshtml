@@ -1,6 +1,51 @@
-﻿<h1>Add Event</h1>
+﻿@using CodingEventsDemo.ViewModels
+@model AddEventViewModel
 
-<form method="post">
-    <input name="name" type="text" />
+
+<link rel="stylesheet" type="text/css" href="~/css/addPage.css">
+
+<h1>Add Event</h1>
+
+@*<img src="~/images/groot-action-figures.jpg" alt="Image of baby groot playing" />*@
+
+<br />
+<br />
+
+<form method="post"
+      asp-controller="Events"
+      asp-action="Add">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" type="text" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" />
+        <span asp-validation-for="Description"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ContactEmail">Email</label>
+        <input asp-for="ContactEmail" />
+        <span asp-validation-for="ContactEmail"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Location">Event Location</label>
+        <input asp-for="Location" />
+        <span asp-validation-for="Location"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NumberOfAttendees">Number of Attendees</label>
+        <input asp-for="NumberOfAttendees" />
+        <span asp-validation-for="NumberOfAttendees"></span>
+    </div>
+
     <input type="submit" value="Add Event" />
 </form>
+
+<br />
+<br />
