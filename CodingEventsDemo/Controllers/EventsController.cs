@@ -13,6 +13,12 @@ namespace coding_events_practice.Controllers
 {
     public class EventsController : Controller
     {
+        private EventDbContext _context;
+
+        public EventsController(EventDbContext dbContext)
+        {
+            _context = dbContext;
+        }
 
         // GET: /<controller>/
         [HttpGet]
@@ -20,7 +26,9 @@ namespace coding_events_practice.Controllers
         {
             //ViewBag.events = EventData.GetAll();
 
-            List<Event> events = new List<Event>(EventData.GetAll());
+            //List<Event> events = new List<Event>(EventData.GetAll());
+
+            List<Event> events = _context.Events.ToList();
 
             return View(events); //List<Event>
         }
@@ -50,7 +58,11 @@ namespace coding_events_practice.Controllers
                     Type = addEventViewModel.Type
                 };
 
-                EventData.Add(newEvent);
+                //EventData.Add(newEvent);
+
+                _context.Events.Add(newEvent); // This stages the data
+                _context.SaveChanges(); // This actually saves the data in the DB
+
 
                 return Redirect("/Events");
             }
@@ -71,9 +83,13 @@ namespace coding_events_practice.Controllers
         {
             foreach (int eventId in eventIds)
             {
-                EventData.Remove(eventId);
+                //EventData.Remove(eventId);
+                Event theEvent = _context.Events.Find(eventId);
+                _context.Events.Remove(theEvent);
+
             }
 
+            _context.SaveChanges();
             return Redirect("/Events");
 
         }
