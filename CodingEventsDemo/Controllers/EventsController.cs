@@ -17,16 +17,13 @@ namespace coding_events_practice.Controllers
 
         public EventsController(EventDbContext dbContext)
         {
-            _context = dbContext;
+            this._context = dbContext;
         }
 
         // GET: /<controller>/
         [HttpGet]
         public IActionResult Index()
         {
-            //ViewBag.events = EventData.GetAll();
-
-            //List<Event> events = new List<Event>(EventData.GetAll());
 
             List<Event> events = _context.Events.ToList();
 
@@ -58,8 +55,6 @@ namespace coding_events_practice.Controllers
                     Type = addEventViewModel.Type
                 };
 
-                //EventData.Add(newEvent);
-
                 _context.Events.Add(newEvent); // This stages the data
                 _context.SaveChanges(); // This actually saves the data in the DB
 
@@ -73,7 +68,8 @@ namespace coding_events_practice.Controllers
         [HttpGet]
         public IActionResult Delete()
         {
-            ViewBag.events = EventData.GetAll();
+            ViewBag.events = _context.Events.ToList();
+
 
             return View();
         }
@@ -83,7 +79,6 @@ namespace coding_events_practice.Controllers
         {
             foreach (int eventId in eventIds)
             {
-                //EventData.Remove(eventId);
                 Event theEvent = _context.Events.Find(eventId);
                 _context.Events.Remove(theEvent);
 
@@ -94,25 +89,25 @@ namespace coding_events_practice.Controllers
 
         }
 
-        [HttpGet]
-        [Route("/Events/Edit/{eventId}")]
-        public IActionResult Edit(int eventId)
-        {
-            Event EditEvent = EventData.GetById(eventId);
-            ViewBag.editEvent = EventData.GetById(eventId);
-            ViewBag.title = $"Edit Event {EditEvent.Name} (id = {EditEvent.Id}";
-            return View();
-        }
+        //[HttpGet]
+        //[Route("/Events/Edit/{eventId}")]
+        //public IActionResult Edit(int eventId)
+        //{
+        //    Event EditEvent = EventData.GetById(eventId);
+        //    ViewBag.editEvent = EventData.GetById(eventId);
+        //    ViewBag.title = $"Edit Event {EditEvent.Name} (id = {EditEvent.Id}";
+        //    return View();
+        //}
 
-        [HttpPost]
-        [Route("/Events/Edit")]
-        public IActionResult SubmitEditEventForm(int eventId, string name, string description)
-        {
-            Event EditEvent = EventData.GetById(eventId);
-            EditEvent.Name = name;
-            EditEvent.Description = description;
+        //[HttpPost]
+        //[Route("/Events/Edit")]
+        //public IActionResult SubmitEditEventForm(int eventId, string name, string description)
+        //{
+        //    Event EditEvent = EventData.GetById(eventId);
+        //    EditEvent.Name = name;
+        //    EditEvent.Description = description;
 
-            return Redirect("/Events");
-        }
+        //    return Redirect("/Events");
+        //}
     }
 }
