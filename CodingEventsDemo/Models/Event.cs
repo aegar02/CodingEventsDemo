@@ -11,8 +11,9 @@ namespace CodingEventsDemo.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string ContactEmail { get; set; }
-        public string Location { get; set; }
-        public int NumberOfAttendees { get; set; }
+        //public string Location { get; set; }
+        //public int NumberOfAttendees { get; set;
+        public EventType Type { get; set; }
 
         public Event()
         {
@@ -21,18 +22,26 @@ namespace CodingEventsDemo.Models
             _nextId++;
         }
 
-        public Event(string name, string description, string contactEmail, string location, int numberOfAttendees)
-            : this()
-        {
-            this.Name = name;
-            this.Description = description;
-            this.ContactEmail = contactEmail;
-            this.Location = Location;
-            this.NumberOfAttendees = NumberOfAttendees;
+    //public Event(string name, string description, string contactEmail, string location, int numberOfAttendees)
+    //   : this()
+    //{
+    //    this.Name = name;
+    //    this.Description = description;
+    //    this.ContactEmail = contactEmail;
+    //    this.Location = Location;
+    //    this.NumberOfAttendees = NumberOfAttendees;
 
-        }
+    //}
 
-        public override string ToString()
+    public Event(string name, string description, string contactEmail)
+        : this()
+    {
+        Name = name;
+        Description = description;
+        ContactEmail = contactEmail;
+    }
+
+    public override string ToString()
         {
             return Name;
         }
