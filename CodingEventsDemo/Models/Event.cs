@@ -5,9 +5,9 @@ namespace CodingEventsDemo.Models
 {
     public class Event
     {
-        private static int _nextId = 1;
+        //private static int _nextId = 1;
 
-        public int Id { get; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string ContactEmail { get; set; }
@@ -17,9 +17,9 @@ namespace CodingEventsDemo.Models
 
         public Event()
         {
-            this.Id = _nextId;
+            //this.Id = _nextId;
 
-            _nextId++;
+            //_nextId++;
         }
 
     //public Event(string name, string description, string contactEmail, string location, int numberOfAttendees)
@@ -34,7 +34,7 @@ namespace CodingEventsDemo.Models
     //}
 
     public Event(string name, string description, string contactEmail)
-        : this()
+        //: this()
     {
         Name = name;
         Description = description;
