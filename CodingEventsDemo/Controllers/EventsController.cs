@@ -85,6 +85,7 @@ namespace coding_events_practice.Controllers
             }
 
             _context.SaveChanges();
+
             return Redirect("/Events");
 
         }
