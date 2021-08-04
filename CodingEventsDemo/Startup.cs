@@ -27,7 +27,7 @@ namespace CodingEventsDemo
         {
             services.AddControllersWithViews();
 
-            string connectionString = "server=localhost;userid=coding_events;password=<;database=coding_events;";
+            string connectionString = "server=localhost;userid=coding_events;password=Learn2code!;database=coding_events;";
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 25));
 
             services.AddDbContext<EventDbContext>(options =>
